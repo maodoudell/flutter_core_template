@@ -1,4 +1,4 @@
-import 'package:flutter_core_template/core/utils/typedefs.dart';
+import 'package:flutter_core_template/core/utils/global/typedefs.dart';
 
 class LoadMoreRequest {
   final String? query;

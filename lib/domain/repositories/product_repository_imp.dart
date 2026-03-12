@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_core_template/core/utils/typedefs.dart';
+import 'package:flutter_core_template/core/utils/global/typedefs.dart';
 import 'package:flutter_core_template/data/network/failure.dart';
 import 'package:flutter_core_template/data/responses/list_response.dart';
 import 'package:flutter_core_template/domain/repositories/product_repository.dart';

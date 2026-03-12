@@ -1,25 +1,16 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_core_template/presentation/views/base/base_view.dart';
 
-
-class HomeView extends BaseView{
+class HomeView extends BaseView {
   const HomeView({super.key});
   @override
-  State<StatefulWidget> createState()=> _HomeViewState();
-
+  State<StatefulWidget> createState() => _HomeViewState();
 }
 
-class _HomeViewState extends BaseViewState<HomeView> with BaseViewMixin{
+class _HomeViewState extends BaseViewState<HomeView> with BaseViewMixin {
   @override
   String appBarTitle() {
-    // TODO: implement appBarTitle
-    throw UnimplementedError();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return "Home View";
   }
 
   @override
@@ -33,8 +24,13 @@ class _HomeViewState extends BaseViewState<HomeView> with BaseViewMixin{
   }
 
   @override
+  bool get isBackButton => false;
+
+  @override
   Widget body() {
     // TODO: implement body
-    throw UnimplementedError();
+    return Column(
+      children: [Text("This is body")],
+    );
   }
 }

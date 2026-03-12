@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core_template/core/utils/app_navigator.dart';
-import 'package:flutter_core_template/core/utils/routes/route_generator.dart';
+import 'package:flutter_core_template/core/utils/routes/app_navigator.dart';
+import 'package:flutter_core_template/core/utils/routes/app_route_generator.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -10,7 +10,6 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-
   @override
   void initState() {
     start();
@@ -19,7 +18,7 @@ class _SplashViewState extends State<SplashView> {
 
   start() async {
     await Future.delayed(const Duration(seconds: 2));
-    AppNavigator.pushName(Routes.login);
+    AppNavigator.pushReplacedNamed(AppRoute.login);
   }
 
   @override
@@ -29,4 +28,3 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 }
-

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core_template/core/utils/app_navigator.dart';
+import 'package:flutter_core_template/core/utils/routes/app_navigator.dart';
 
 ThemeData get appTheme => Theme.of(AppNavigator.context);
 ColorScheme get appColor => appTheme.colorScheme;
-
 
 class AppColors {
   static const Color kPrimary = Color(0xFF329494);

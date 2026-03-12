@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_core_template/core/constants/app_constant.dart';
-import 'package:flutter_core_template/core/constants/app_constant.dart';
-import 'package:flutter_core_template/core/utils/app_navigator.dart';
-import 'package:flutter_core_template/core/utils/routes/route_generator.dart';
+import 'package:flutter_core_template/core/utils/routes/app_navigator.dart';
+import 'package:flutter_core_template/core/utils/routes/app_route_generator.dart';
 import 'package:flutter_core_template/core/utils/themes/color/app_color_scheme.dart';
 import 'package:flutter_core_template/core/utils/themes/theme.dart';
 
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
       //   appBarTheme: AppBarTheme().copyWith(centerTitle: true),
       // ),
       navigatorKey: AppNavigator.navigator,
-      onGenerateRoute: RouteGenerator.getRoute,
+      onGenerateRoute: AppRouteGenerator.getRoute,
     );
   }
 }

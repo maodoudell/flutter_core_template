@@ -1,11 +1,12 @@
 # flutter_core_template
-<<<<<<< HEAD
-This is core template for flutter project base
-=======
 
 A new Flutter project.
 
 ## Getting Started
+
+
+flutter version : 3.36.6
+
 
 This project is a starting point for a Flutter application.
 
@@ -17,4 +18,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
->>>>>>> 91c938d (init)
+

@@ -1,7 +1,7 @@
-import 'package:flutter_core_template/core/utils/app_state.dart';
+import 'package:flutter_core_template/core/utils/global/app_state.dart';
 
-class LoginState{
-AppState appState;
+class LoginState {
+  AppState appState;
 
-LoginState({required this.appState});
+  LoginState({required this.appState});
 }
