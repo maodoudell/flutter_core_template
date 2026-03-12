@@ -2,7 +2,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter_core_template/core/constant/app_constant.dart';
-import 'package:flutter_core_template/core/repo/app_preference.dart';
+import 'package:flutter_core_template/core/service/repo/app_preference.dart';
 
 const String APPLICATION_JSON = "application/json";
 const String CONTENT_TYPE = "content-type";

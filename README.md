@@ -7,15 +7,30 @@ A new Flutter project.
 ##
 flutter version : 3.36.6
 
+🏗 Architecture Overview
 
-This project is a starting point for a Flutter application.
+This project follows the Clean Architecture pattern, separating the code into three distinct layers:
 
-A few resources to get you started if this is your first Flutter project:
+Data Layer: Repositories, Data Sources (Remote/Local), and Models (DTOs).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Domain Layer: The heart of the application. Contains Entities, Use Cases, and Repository Interfaces.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Presentation Layer: UI Components (Widgets) and State Management logic
 
+
+🛠 Core Features & Resources
+This boilerplate comes pre-configured with essential tools to jumpstart your development:
+
+State Management: [Bloc]
+
+Dependency Injection: Powered by get_it and injectable.
+
+Networking: Type-safe API calls using dio and retrofit.
+
+Local Storage: Cached data handling with flutter_secure_storage or shared_preferences.
+
+Functional Programming: Error handling using dartz (Either Left/Right).
+
+Code Generation: Pre-configured build_runner for Freezed and JSON Serializable.
+
+Internationalization: app_localization

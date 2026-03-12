@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core_template/core/utils/themes/color/app_color.dart';
+import 'package:flutter_core_template/core/util/themes/color/app_color.dart';
 
 class LongButton extends StatefulWidget {
   final VoidCallback onTap;
