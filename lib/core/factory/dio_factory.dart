@@ -1,6 +1,8 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:dio/dio.dart';
-import 'package:flutter_core_template/core/constants/app_constant.dart';
-import 'package:flutter_core_template/domain/repositories/app_preference.dart';
+import 'package:flutter_core_template/core/constant/app_constant.dart';
+import 'package:flutter_core_template/core/repo/app_preference.dart';
 
 const String APPLICATION_JSON = "application/json";
 const String CONTENT_TYPE = "content-type";
@@ -27,7 +29,7 @@ class DioFactory {
   Dio getDio() {
     Dio dio = Dio();
     int timeOut = 5 * 1000;
-    _token = _appPreferences.getToken();
+    _token = _appPreferences.getAccessToken();
     // var ip = _appPreferences.getHomeIP();
     // if (ip != null && !ip.endsWith('/')) ip += '/';
     Map<String, String?> headers = {

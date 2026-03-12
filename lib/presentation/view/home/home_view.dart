@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core_template/presentation/views/base/base_view.dart';
+import 'package:flutter_core_template/presentation/view/base/base_view.dart';
 
 class HomeView extends BaseView {
   const HomeView({super.key});

@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_core_template/core/utils/routes/app_navigator.dart';
+import 'package:flutter_core_template/l10n/app_localizations.dart';
 
 const double s1 = 1;
 const double s2 = 2;
@@ -24,6 +26,10 @@ const double s50 = 50;
 
 const spacer = Spacer();
 
-SizedBox space(double size)=> SizedBox(width: size,height: size,);
+SizedBox space(double size) => SizedBox(
+      width: size,
+      height: size,
+    );
+AppLocalizations get appText => AppLocalizations.of(AppNavigator.context)!;
 
 EdgeInsets edgeInsetsZero = EdgeInsets.zero;

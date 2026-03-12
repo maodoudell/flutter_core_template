@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_core_template/core/errors/route_not_found.dart';
-import 'package:flutter_core_template/presentation/views/auth/login/blocs/bloc.dart';
-import 'package:flutter_core_template/presentation/views/auth/login/login_view.dart';
-import 'package:flutter_core_template/presentation/views/home_view.dart';
-import 'package:flutter_core_template/presentation/views/splash_view.dart';
+import 'package:flutter_core_template/presentation/view/auth/login/blocs/bloc.dart';
+import 'package:flutter_core_template/presentation/view/auth/login/login_view.dart';
+import 'package:flutter_core_template/presentation/view/home/home_view.dart';
+import 'package:flutter_core_template/presentation/view/auth/splash/splash_view.dart';
 
 class AppRoute {
   static const String splash = '/';

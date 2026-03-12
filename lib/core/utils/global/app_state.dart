@@ -1,13 +1,11 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_core_template/data/requests/load_more_request.dart';
 
-enum AppResponseState { initial,loading ,empty, completed, error }
+enum AppResponseState { initial, loading, empty, completed, error }
 
 enum AppEnumPosition { pop, bottom, full }
 
-class AppState<T>{
+class AppState<T> {
   final T? data;
   final VoidCallback? onTap;
   final String? message;
@@ -33,15 +31,23 @@ class AppState<T>{
     );
   }
 
-  Widget buildWidget({required Widget child,Widget? placeHolder,Color? bgColor}){
-    if(state == AppResponseState.initial){
-      return const Scaffold(body: Center(child: Text("Initial")),);
-    }else if(state == AppResponseState.loading){
-      return const Scaffold(body: Center(child: CircularProgressIndicator()),);
-    }else if(state == AppResponseState.empty){
-      return const Scaffold(body: Center(child: Text("Empty")),);
-    }else if(state == AppResponseState.error){
-      return const Scaffold(body: Center(child: Text("Error")),);
+  Widget buildWidget({required Widget child, Widget? placeHolder, Color? bgColor}) {
+    if (state == AppResponseState.initial) {
+      return const Scaffold(
+        body: Center(child: Text("Initial")),
+      );
+    } else if (state == AppResponseState.loading) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    } else if (state == AppResponseState.empty) {
+      return const Scaffold(
+        body: Center(child: Text("Empty")),
+      );
+    } else if (state == AppResponseState.error) {
+      return const Scaffold(
+        body: Center(child: Text("Error")),
+      );
     }
     // else if(state == AppResponseState.completed){
     //
@@ -52,17 +58,23 @@ class AppState<T>{
     );
   }
 
-  AppState<T> loading(){
-    return copyWith(state: AppResponseState.loading,);
-  }
-  AppState<T> empty(){
-    return copyWith(state: AppResponseState.empty,);
-  }
-  AppState<T> completed({T? data,LoadMoreRequest? request}){
-    return copyWith(data: data,state: AppResponseState.completed,request: request);
-  }
-  AppState<T> error(String message,{required VoidCallback onTap}){
-    return copyWith(data: data,state: AppResponseState.error,onTap: onTap);
+  AppState<T> loading() {
+    return copyWith(
+      state: AppResponseState.loading,
+    );
   }
 
+  AppState<T> empty() {
+    return copyWith(
+      state: AppResponseState.empty,
+    );
+  }
+
+  AppState<T> completed({T? data, LoadMoreRequest? request}) {
+    return copyWith(data: data, state: AppResponseState.completed, request: request);
+  }
+
+  AppState<T> error(String message, {required VoidCallback onTap}) {
+    return copyWith(data: data, state: AppResponseState.error, onTap: onTap);
+  }
 }

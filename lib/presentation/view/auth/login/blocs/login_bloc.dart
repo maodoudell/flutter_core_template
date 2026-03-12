@@ -6,8 +6,8 @@ import 'package:flutter_core_template/core/configuration/app_dependency_injectio
 import 'package:flutter_core_template/core/utils/routes/app_route_generator.dart';
 import 'package:flutter_core_template/data/models/product_model.dart';
 import 'package:flutter_core_template/domain/repositories/product_repository.dart';
-import 'package:flutter_core_template/presentation/views/auth/login/blocs/login_event.dart';
-import 'package:flutter_core_template/presentation/views/auth/login/blocs/login_state.dart';
+import 'package:flutter_core_template/presentation/view/auth/login/blocs/login_event.dart';
+import 'package:flutter_core_template/presentation/view/auth/login/blocs/login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final ProductRepository _productRepository = getIt<ProductRepository>();
