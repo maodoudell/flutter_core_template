@@ -11,19 +11,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 final GetIt getIt = GetIt.instance;
 
 Future<void> setupAppModule() async {
-  final dio = getIt<DioFactory>().getDio();
   final sharedPreferences = await SharedPreferences.getInstance();
   // shared prefs instance
   getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
   getIt.registerLazySingleton<AppPreference>(() => AppPreferenceImpl(getIt()));
-  getIt.registerFactory<AuthApi>(() => AuthApi(dio));
+
   getIt.registerFactory<AuthRepositoryImpl>(() => AuthRepositoryImpl(getIt()));
   await setUpDio();
 }
 
 Future<void> setUpDio() async {
-  getIt.registerFactory<DioFactory>(() => DioFactory(getIt()));
-  final dio = getIt<DioFactory>().getDio();
+  getIt.registerFactory<DioClient>(() => DioClient(getIt()));
+  final dio = getIt<DioClient>().get();
+  getIt.registerFactory<AuthApi>(() => AuthApi(dio));
   getIt.registerFactory<ProductRepository>(() => ProductRepositoryImpl(dio));
 }
 

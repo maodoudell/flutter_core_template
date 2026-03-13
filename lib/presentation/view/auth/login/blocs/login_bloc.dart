@@ -19,15 +19,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   _emitLoadLoginDataEvent(LoadLoginDataEvent event, emit) async {
-    final either = await _productRepository.getProduct();
-    either.fold((failure) {
-      print("failure ${failure.toJson()}");
-    }, (response) {
-      List<ProductModel> products = response.data.map((e) => ProductModel.fromJson(e)).toList();
-      appPrint("${response.toJson()}");
-    });
-    //error
-    state.appState.error("message", onTap: () {});
     emit(LoginState(appState: state.appState.completed(data: [])));
     // emit(LoginState(appState: state.appState.error("message", onTap: (){})));
   }

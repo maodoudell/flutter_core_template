@@ -9,7 +9,7 @@ class AppState<T> {
   final T? data;
   final VoidCallback? onTap;
   final String? message;
-  final LoadMoreRequest? request;
+  PaginationRequest? request;
   final AppResponseState state;
 
   AppState({this.data, this.onTap, this.message, this.request, this.state = AppResponseState.initial});
@@ -17,7 +17,7 @@ class AppState<T> {
   AppState<T> copyWith({
     T? data,
     AppResponseState? state,
-    LoadMoreRequest? request,
+    PaginationRequest? request,
     String? message,
     VoidCallback? onTap,
     Widget? placeholder,
@@ -70,7 +70,7 @@ class AppState<T> {
     );
   }
 
-  AppState<T> completed({T? data, LoadMoreRequest? request}) {
+  AppState<T> completed({T? data, PaginationRequest? request}) {
     return copyWith(data: data, state: AppResponseState.completed, request: request);
   }
 

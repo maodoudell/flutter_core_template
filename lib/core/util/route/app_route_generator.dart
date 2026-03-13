@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_core_template/core/util/errors/route_not_found.dart';
+import 'package:flutter_core_template/core/util/print/app_print.dart';
 import 'package:flutter_core_template/presentation/view/auth/login/blocs/bloc.dart';
 import 'package:flutter_core_template/presentation/view/auth/login/login_view.dart';
+import 'package:flutter_core_template/presentation/view/home/blocs/home_bloc.dart';
 import 'package:flutter_core_template/presentation/view/home/home_view.dart';
 import 'package:flutter_core_template/presentation/view/auth/splash/splash_view.dart';
 
@@ -21,6 +23,7 @@ class AppRouteGenerator {
   }
 
   static Widget _getPage(String? route, String id, dynamic arguments) {
+    appPrint("${route}");
     switch (route) {
       case AppRoute.splash:
         return const SplashView();
@@ -30,7 +33,10 @@ class AppRouteGenerator {
           child: const LoginView(),
         );
       case AppRoute.home:
-        return HomeView();
+        return BlocProvider(
+          create: (context) => HomeBloc(),
+          child: const HomeView(),
+        );
       default:
         return const RouteNotFound();
     }

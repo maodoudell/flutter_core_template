@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_core_template/core/constant/app_constant.dart';
 import 'package:flutter_core_template/core/service/repo/app_preference.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const String APPLICATION_JSON = "application/json";
 const String CONTENT_TYPE = "content-type";
@@ -21,12 +22,18 @@ final statusCode = [403, 498];
 
 bool hasRetry = false;
 
-class DioFactory {
+abstract class DioFactory {
+  Dio get();
+  Future<String?> refreshToken(String? refreshToken);
+}
+
+class DioClient implements DioFactory {
   String? _token;
   final AppPreference _appPreferences;
-  DioFactory(this._appPreferences);
+  DioClient(this._appPreferences);
 
-  Dio getDio() {
+  @override
+  Dio get() {
     Dio dio = Dio();
     int timeOut = 5 * 1000;
     _token = _appPreferences.getAccessToken();
@@ -57,6 +64,7 @@ class DioFactory {
 
     dio.interceptors
       ..clear()
+      ..add(PrettyDioLogger(request: true, responseBody: true))
       ..add(QueuedInterceptorsWrapper(onError: (DioException e, handler) async {
         // xPrint('interceptors ${e.requestOptions.baseUrl}');
         // xPrint('interceptors ${e.requestOptions.headers}');
@@ -91,7 +99,8 @@ class DioFactory {
     return dio;
   }
 
-  Future<String?> _refreshToken(String? refreshToken) async {
+  @override
+  Future<String?> refreshToken(String? refreshToken) async {
     // return (await RefreshTokenUseCase().execute('Bearer $refreshToken')).fold(
     //         (l) async {
     //       xPrint(l.toString());
@@ -100,5 +109,6 @@ class DioFactory {
     //     }, (r) async {
     //   return await AuthProcedure.refreshToken(r.data);
     // });
+    return await "";
   }
 }
