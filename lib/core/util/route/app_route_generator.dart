@@ -3,6 +3,7 @@ import 'package:flutter_core_template/core/util/errors/route_not_found.dart';
 import 'package:flutter_core_template/core/util/print/app_print.dart';
 import 'package:flutter_core_template/presentation/view/auth/login/blocs/bloc.dart';
 import 'package:flutter_core_template/presentation/view/auth/login/login_view.dart';
+import 'package:flutter_core_template/presentation/view/auth/setting/setting_view.dart';
 import 'package:flutter_core_template/presentation/view/home/blocs/home_bloc.dart';
 import 'package:flutter_core_template/presentation/view/home/home_view.dart';
 import 'package:flutter_core_template/presentation/view/auth/splash/splash_view.dart';
@@ -11,6 +12,7 @@ class AppRoute {
   static const String splash = '/';
   static const String login = '/login';
   static const String home = '/home';
+  static const String setting = '/setting';
 }
 
 class AppRouteGenerator {
@@ -37,6 +39,8 @@ class AppRouteGenerator {
           create: (context) => HomeBloc(),
           child: const HomeView(),
         );
+      case AppRoute.setting:
+        return SettingView();
       default:
         return const RouteNotFound();
     }

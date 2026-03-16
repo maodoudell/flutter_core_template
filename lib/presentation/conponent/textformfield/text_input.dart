@@ -15,7 +15,10 @@ class TextInput extends StatelessWidget {
       margin: margin ?? EdgeInsets.zero,
       child: TextFormField(
         controller: controller,
-        decoration: InputDecorationStyle.textFieldStyle(labelTextStr: label, hintTextStr: hintText),
+        decoration: InputDecorationStyle.textFieldStyle(
+          labelTextStr: label,
+          hintTextStr: hintText,
+        ),
       ),
     );
   }
@@ -30,8 +33,9 @@ class InputDecorationStyle {
   }) {
     return InputDecoration(
       contentPadding: contentPadding,
-      labelText: labelTextStr,
+      // labelText: labelTextStr,
       hintText: hintTextStr,
+      hintStyle: TextStyle(),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
       ),

@@ -74,8 +74,6 @@ import 'package:flutter_core_template/presentation/view/home/blocs/home_state.da
 
 class HomeBloc extends Bloc<HomeEvent, HomeSate> {
   final ProductRepository _productRepository = getIt<ProductRepository>();
-  final int _limit = 10;
-
   HomeBloc() : super(HomeSate(appState: AppState(request: PaginationRequest(page: 0, hasMore: true)))) {
     on<LoadHomeDataEvent>(_emitLoadHomeDataEvent);
     on<GetProductEvent>(_emitGetProductEvent);
@@ -83,6 +81,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeSate> {
     // Initial load
     add(LoadHomeDataEvent());
   }
+
+  // AppState get _appState => state.appState;
 
   void onRefresh() {
     add(GetProductEvent(isRefresh: true));
@@ -97,34 +97,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeSate> {
   }
 
   Future<void> _emitGetProductEvent(GetProductEvent event, Emitter<HomeSate> emit) async {
-    final currentRequest = state.appState.request;
-
+    final request = state.appState.request;
+    final int _limit = state.appState.request?.limit ?? 10;
+    final int _page0 = 0;
     // 1. Guard Clauses
-    if (currentRequest?.isLoading == true) return;
-    if (!event.isRefresh && currentRequest?.hasMore == false) return;
-
+    if (request?.isLoading == true) return;
+    if (!event.isRefresh && request?.hasMore == false) return;
     // 2. Prepare Request State (Immutably)
-    int nextPage = event.isRefresh ? 0 : (currentRequest?.page ?? 0);
-
+    int nextPage = event.isRefresh ? _page0 : (request?.page ?? _page0);
     // Update state to loading
     if (event.isRefresh) {
-      emit(state.copyWith(
-        appState: state.appState.copyWith(request: currentRequest?.copyWith(isLoading: true, page: nextPage)).loading(),
-      ));
+      emit(state.updateState(state.appState.updateRequest(request?.copyWith(isLoading: true, page: _page0)).loading()));
     } else {
-      emit(state.copyWith(
-        appState: state.appState.copyWith(request: currentRequest?.copyWith(isLoading: true, page: 0)),
-      ));
+      emit(state.updateState(state.appState.updateRequest(request?.copyWith(isLoading: true))));
     }
-
     // 3. Data Fetching
-    DataMap params = {
-      "limit": _limit,
-      "skip": nextPage * _limit,
-    };
-
+    DataMap params = {"limit": _limit, "skip": nextPage * _limit};
     final either = await _productRepository.getProduct(params);
-
     either.fold(
       (failure) {
         appPrint("failure ${failure.toJson()}");
@@ -133,10 +122,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeSate> {
         ));
       },
       (response) {
-        final List<ProductModel> newProducts = (response.data as List).map((e) => ProductModel.fromJson(e)).toList();
-
+        final List<ProductModel> newProducts = (response.data).map((e) => ProductModel.fromJson(e)).toList();
         final bool hasMore = newProducts.length >= _limit;
-
         // 4. Merge Data
         List<ProductModel> updatedList;
         if (event.isRefresh) {
@@ -144,17 +131,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeSate> {
         } else {
           updatedList = List<ProductModel>.from(state.appState.data ?? [])..addAll(newProducts);
         }
-
         // 5. Final State Emission (Single Emit)
-        emit(state.copyWith(
-          appState: state.appState.completed(data: updatedList).copyWith(
-                request: currentRequest?.copyWith(
-                  isLoading: false,
-                  page: nextPage + 1,
-                  hasMore: hasMore,
-                ),
+        emit(state.updateState(state.appState.completed(data: updatedList).updateRequest(
+              request?.copyWith(
+                isLoading: false,
+                page: nextPage + 1,
+                hasMore: hasMore,
               ),
-        ));
+            )));
       },
     );
   }

@@ -14,6 +14,8 @@ class AppState<T> {
 
   AppState({this.data, this.onTap, this.message, this.request, this.state = AppResponseState.initial});
 
+  AppState<T> updateRequest(PaginationRequest? req) => copyWith(request: req);
+
   AppState<T> copyWith({
     T? data,
     AppResponseState? state,

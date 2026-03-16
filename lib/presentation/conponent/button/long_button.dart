@@ -1,90 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_core_template/core/util/themes/color/app_color.dart';
 
-class LongButton extends StatefulWidget {
-  final VoidCallback onTap;
+abstract class ActionButton extends StatelessWidget {
   final String text;
   final double? width;
   final double? height;
-  final double? borderRadius;
-  final double? fontSize;
-  final Color? color;
+  final Color? background;
+  final VoidCallback? onTap;
 
-  const LongButton({
-    required this.onTap,
-    required this.text,
-    this.height,
-    this.width,
-    this.borderRadius,
-    this.fontSize,
-    this.color,
-    super.key,
-  });
-
-  @override
-  State<LongButton> createState() => _LongButtonState();
+  ActionButton({required this.text, this.width, this.height, this.background, required this.onTap});
 }
 
-class _LongButtonState extends State<LongButton> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  final Duration _animationDuration = const Duration(milliseconds: 300);
-  final Tween<double> _tween = Tween<double>(begin: 1.0, end: 0.95);
-
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: _animationDuration,
-    )..addListener(() {
-        setState(() {});
-      });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+class LongButton extends ActionButton {
+  LongButton({required super.text, required super.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        _controller.forward().then((_) {
-          _controller.reverse();
-        });
-        widget.onTap();
-      },
-      child: ScaleTransition(
-        scale: _tween.animate(
-          CurvedAnimation(
-            parent: _controller,
-            curve: Curves.easeOut,
-            reverseCurve: Curves.easeIn,
-          ),
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: Container(
+        height: height ?? 50,
+        alignment: Alignment.center,
+        width: width ?? double.maxFinite,
+        decoration: BoxDecoration(
+          color: background ?? const Color(0xFFD1A661),
+          borderRadius: BorderRadius.circular(12),
         ),
-        child: Card(
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(100),
-          ),
-          child: Container(
-            height: widget.height ?? 50,
-            alignment: Alignment.center,
-            width: widget.width ?? double.maxFinite,
-            decoration: BoxDecoration(
-              color: widget.color ?? const Color(0xFFD1A661),
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 20),
-            ),
-            child: Text(
-              widget.text,
-              style: TextStyle(
-                  color: widget.color == null ? AppColors.kWhite : Colors.black, fontSize: widget.fontSize ?? 16, fontWeight: FontWeight.w600),
-            ),
-          ),
+        child: Text(
+          text,
+          style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.w600),
         ),
       ),
     );
+  }
+}
+
+class ShortButton extends ActionButton {
+  ShortButton({required super.text, required super.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox();
   }
 }

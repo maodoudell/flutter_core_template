@@ -47,7 +47,6 @@ class _HomeViewState extends BaseViewState<HomeView> with BaseViewMixin {
 
   @override
   Widget body() {
-    // TODO: implement body
     return BlocBuilder<HomeBloc, HomeSate>(
       builder: (context, state) {
         return state.appState.buildWidget(

@@ -59,7 +59,8 @@ class PaginationRequest {
   final bool end;
   final bool hasMore;
   final String? q;
-  PaginationRequest({this.page = 0, this.size = 10, this.end = false, this.isLoading = false, this.hasMore = true, this.q});
+  final int limit;
+  PaginationRequest({this.limit = 10, this.page = 0, this.size = 10, this.end = false, this.isLoading = false, this.hasMore = true, this.q});
 
   Map<String, dynamic> toJson() {
     return {

@@ -7,6 +7,8 @@ class HomeSate {
 
   HomeSate({required this.appState});
 
+  HomeSate updateState(AppState<List<ProductModel>> appStateValue) => copyWith(appState: appStateValue);
+
   HomeSate copyWith({AppState<List<ProductModel>>? appState}) {
     return HomeSate(appState: appState ?? this.appState);
   }
