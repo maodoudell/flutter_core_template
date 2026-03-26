@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_core_template/core/util/print/app_print.dart';
+import 'package:flutter_core_template/core/utils/print/app_print.dart';
 import 'package:flutter_core_template/presentation/view/base/base_view.dart';
 import 'package:flutter_core_template/presentation/view/home/blocs/home_bloc.dart';
 import 'package:flutter_core_template/presentation/view/home/blocs/home_event.dart';

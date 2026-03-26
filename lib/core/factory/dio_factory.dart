@@ -1,8 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:dio/dio.dart';
-import 'package:flutter_core_template/core/constant/app_constant.dart';
-import 'package:flutter_core_template/core/service/repo/app_preference.dart';
+import 'package:flutter_core_template/core/constants/app_constant.dart';
+import 'package:flutter_core_template/core/services/repo/app_preference.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 const String APPLICATION_JSON = "application/json";

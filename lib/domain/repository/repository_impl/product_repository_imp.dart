@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_core_template/core/util/global/typedefs.dart';
-import 'package:flutter_core_template/core/util/print/app_print.dart';
-import 'package:flutter_core_template/data/network/failure.dart';
-import 'package:flutter_core_template/data/response/list_response.dart';
+import 'package:flutter_core_template/core/utils/global/typedefs.dart';
+import 'package:flutter_core_template/core/utils/print/app_print.dart';
+import 'package:flutter_core_template/data/networks/failure.dart';
+import 'package:flutter_core_template/data/responses/list_response.dart';
 import 'package:flutter_core_template/domain/repository/product_repository.dart';
 
 class ProductRepositoryImpl extends ProductRepository {

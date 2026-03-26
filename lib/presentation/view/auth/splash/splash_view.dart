@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core_template/core/util/route/app_navigator.dart';
-import 'package:flutter_core_template/core/util/route/app_route_generator.dart';
-import 'package:flutter_core_template/core/util/themes/color/app_color.dart';
-import 'package:flutter_core_template/core/util/themes/sizes/app_size.dart';
+import 'package:flutter_core_template/core/utils/routes/app_navigator.dart';
+import 'package:flutter_core_template/core/utils/routes/app_route_generator.dart';
+import 'package:flutter_core_template/core/utils/themes/colors/app_color.dart';
+import 'package:flutter_core_template/core/utils/themes/sizes/app_size.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

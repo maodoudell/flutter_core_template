@@ -1,11 +1,11 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_core_template/core/configuration/app_dependency_injection.dart';
-// import 'package:flutter_core_template/core/util/global/app_state.dart';
-// import 'package:flutter_core_template/core/util/global/typedefs.dart';
-// import 'package:flutter_core_template/core/util/print/app_print.dart';
+// import 'package:flutter_core_template/core/configurations/app_dependency_injection.dart';
+// import 'package:flutter_core_template/core/utils/global/app_state.dart';
+// import 'package:flutter_core_template/core/utils/global/typedefs.dart';
+// import 'package:flutter_core_template/core/utils/print/app_print.dart';
 // import 'package:flutter_core_template/data/models/product_model.dart';
-// import 'package:flutter_core_template/data/request/load_more_request.dart';
+// import 'package:flutter_core_template/data/requests/load_more_request.dart';
 // import 'package:flutter_core_template/domain/repository/product_repository.dart';
 // import 'package:flutter_core_template/presentation/view/home/blocs/home_event.dart';
 // import 'package:flutter_core_template/presentation/view/home/blocs/home_state.dart';
@@ -62,12 +62,12 @@
 // }
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_core_template/core/configuration/app_dependency_injection.dart';
-import 'package:flutter_core_template/core/util/global/app_state.dart';
-import 'package:flutter_core_template/core/util/global/typedefs.dart';
-import 'package:flutter_core_template/core/util/print/app_print.dart';
+import 'package:flutter_core_template/core/configurations/app_dependency_injection.dart';
+import 'package:flutter_core_template/core/utils/global/app_state.dart';
+import 'package:flutter_core_template/core/utils/global/typedefs.dart';
+import 'package:flutter_core_template/core/utils/print/app_print.dart';
 import 'package:flutter_core_template/data/models/product_model.dart';
-import 'package:flutter_core_template/data/request/load_more_request.dart';
+import 'package:flutter_core_template/data/requests/load_more_request.dart';
 import 'package:flutter_core_template/domain/repository/product_repository.dart';
 import 'package:flutter_core_template/presentation/view/home/blocs/home_event.dart';
 import 'package:flutter_core_template/presentation/view/home/blocs/home_state.dart';

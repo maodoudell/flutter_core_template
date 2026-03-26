@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core_template/core/util/global/common.dart';
-import 'package:flutter_core_template/core/util/route/app_navigator.dart';
-import 'package:flutter_core_template/core/util/route/app_route_generator.dart';
-import 'package:flutter_core_template/core/util/themes/color/app_color.dart';
-import 'package:flutter_core_template/core/util/themes/styles/app_style.dart';
-import 'package:flutter_core_template/presentation/conponent/button/long_button.dart';
-import 'package:flutter_core_template/presentation/conponent/button/tap_animation.dart';
-import 'package:flutter_core_template/presentation/conponent/textformfield/text_input.dart';
+import 'package:flutter_core_template/core/utils/global/common.dart';
+import 'package:flutter_core_template/core/utils/routes/app_navigator.dart';
+import 'package:flutter_core_template/core/utils/routes/app_route_generator.dart';
+import 'package:flutter_core_template/core/utils/themes/colors/app_color.dart';
+import 'package:flutter_core_template/core/utils/themes/colors/app_color_scheme.dart';
+import 'package:flutter_core_template/core/utils/themes/styles/app_style.dart';
+import 'package:flutter_core_template/presentation/conponents/button/long_button.dart';
+import 'package:flutter_core_template/presentation/conponents/button/tap_animation.dart';
+import 'package:flutter_core_template/presentation/conponents/textformfield/text_input.dart';
 import 'package:flutter_core_template/presentation/view/auth/login/blocs/bloc.dart';
 import 'package:flutter_core_template/presentation/view/auth/login/blocs/login_state.dart';
+import 'package:flutter_core_template/presentation/view/global/free_blocs/free_bloc.dart';
+import 'package:flutter_core_template/presentation/view/global/free_blocs/free_event.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -43,16 +46,25 @@ class _LoginViewState extends State<LoginView> {
                     Container(),
                     _header(),
                     TextInput(
-                      hintText: 'Email',
+                      hintText: appText.email,
                       controller: TextEditingController(),
                       margin: EdgeInsets.only(top: 20),
                     ),
                     TextInput(
-                      hintText: 'Password',
+                      hintText: appText.password_hint,
                       controller: TextEditingController(),
                       margin: EdgeInsets.only(top: 20),
                     ),
                     space(s25),
+                    TapAnimation(
+                      child: LongButton(
+                        onTap: null,
+                        text: "Change Mode",
+                      ),
+                      onTap: () {
+                        context.read<FreeBloc>().add(OnChangeColorModeEvent(ColorMode.dark));
+                      },
+                    ),
                     TapAnimation(
                       child: LongButton(
                         onTap: null,

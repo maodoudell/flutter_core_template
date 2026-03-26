@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_core_template/core/util/print/app_print.dart';
-import 'package:flutter_core_template/core/util/themes/sizes/app_size.dart';
+import 'package:flutter_core_template/core/utils/print/app_print.dart';
+import 'package:flutter_core_template/core/utils/themes/sizes/app_size.dart';
 import 'package:flutter_core_template/presentation/view/matching/matching_game_controller.dart';
 import 'package:flutter_core_template/presentation/view/matching/question.dart';
 import 'package:get/get.dart';

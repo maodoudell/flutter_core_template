@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_core_template/core/util/global/common.dart';
-import 'package:flutter_core_template/core/util/print/app_print.dart';
-import 'package:flutter_core_template/data/network/failure.dart';
-import 'package:flutter_core_template/data/response/base_response.dart';
+import 'package:flutter_core_template/core/utils/global/common.dart';
+import 'package:flutter_core_template/core/utils/print/app_print.dart';
+import 'package:flutter_core_template/data/networks/failure.dart';
+import 'package:flutter_core_template/data/responses/base_response.dart';
 
 class ApiResponse<T extends BaseResponse> {
   Future<T> request;
